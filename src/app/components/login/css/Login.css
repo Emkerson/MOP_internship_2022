@@ -1,0 +1,13 @@
+.Body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 30px;
+}
+.card{
+    padding: 30px;
+    width: 35%; 
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+
