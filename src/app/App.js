@@ -1,10 +1,8 @@
-import React from "react";
-import Login from "./components/login/Login";
+import React from 'react'
+import RouteOnApp from './route/RouteOnApp'
 
-const App = () =>{
-    return(
-        <Login/>
-    );
-};
+const App = () => {
+  return <RouteOnApp />
+}
 
-export default App;
+export default App
