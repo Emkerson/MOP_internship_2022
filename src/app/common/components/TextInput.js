@@ -1,12 +1,28 @@
 import React from 'react'
 
-const TextInput = ({ name, label, type = 'text', placeholder }) => {
+const TextInput = ({
+  id,
+  name,
+  label,
+  type = 'text',
+  placeholder,
+  error,
+  ...rest
+ 
+}) => {
   return (
     <div>
       <br />
       <label>{label}</label>
-      <input type={type} placeholder={placeholder} name={name} />
+      <input
+        id={id}
+        type={type}
+        placeholder={placeholder}
+        name={name}
+        {...rest}
+      />
       <br />
+      {error ? <div className='ui negative message'>{error}</div> : null}
     </div>
   )
 }
