@@ -1,56 +1,74 @@
 import React from 'react'
 import Button from '../../common/components/Button'
-import CheckBoxInput from '../../common/components/CheckBoxInput'
 import TextInput from '../../common/components/TextInput'
+import SingupSchema from "../../validation/SingupSchema"
+import { useFormik } from 'formik'
+import {first_name_input,last_name_input,email_input,user_name_input,password_input,password_confirmation} from "../constants/GlobalConstants"
 
 const SignUp = () => {
+  const formik = useFormik({
+    initialValues: {
+      [first_name_input.name]:"",
+      [last_name_input.name]:"",
+      [user_name_input.name]:"",
+      [email_input.name]: "",
+      [password_input.name]: "",
+      [password_confirmation.name]:"",
+    },
+    validationSchema: SingupSchema,
+    onSubmit: values => {
+      alert(JSON.stringify(values, null, 2))
+    },
+  })
   return (
     <div className="Body">
       <div className="card">
         <div className="ui form ">
           <div className="field ui dividing header">Create account</div>
-          <form>
+          <form onSubmit={formik.handleSubmit} autoComplete="off">
             <TextInput
-              name="first-name"
-              label="Name"
-              type="text"
-              placeholder="Donald"
-            />
-            <TextInput
-              name="last-name"
-              label="Last name"
-              type="text"
-              placeholder="Duck"
+              {...first_name_input}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.firstName}
+              error={formik.errors.firstName}
             />
             <TextInput
-              name="email"
-              label="E-mail"
-              type="email"
-              placeholder="someone@exemple.com"
+              {...last_name_input}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.lastName}
+              error={formik.errors.lastName}
             />
             <TextInput
-              name="username"
-              label="Username"
-              type="text"
-              placeholder="Type username"
+              {...email_input}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.email}
+              error={formik.errors.email}
             />
             <TextInput
-              name="password"
-              label="Password"
-              type="password"
-              placeholder="Type password"
+              {...user_name_input}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.userName}
+              error={formik.errors.userName}
             />
             <TextInput
-              name="confirm-password"
-              label="Confirm password"
-              type="password"
-              placeholder="Confirm password"
+              {...password_input}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.password}
+              error={formik.errors.password}
             />
-            <CheckBoxInput
-              name="check-box"
-              className="ui checkbox"
-              label="Do you want to create an account"
+            <TextInput
+              {...password_confirmation}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.passwordConfirmation}
+              error={formik.errors.passwordConfirmation}
             />
+            
             <Button className="ui button" text="Make account" type="submit" />
           </form>
         </div>
