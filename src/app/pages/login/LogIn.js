@@ -6,28 +6,14 @@ import TextInput from '../../common/components/TextInput'
 import './style/Login.css'
 import { useFormik } from 'formik'
 import LoginSchema from '../../validation/LoginSchema'
+import {email_input,password_input,checkbox_login} from "../constants/GlobalConstants"
 
 
 const LogIn = () => {
-  /*
-  const [staySigned, setIsSigned] = useState(false)
-  const handleChangeCheckBox = () => {
-    setIsSigned((current) => !current)
-  }
-
-  
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    console.log(event.target.email.value)
-    console.log(event.target.password.value)
-    console.log(staySigned)
-  }*/
-  
-  
   const formik = useFormik({
     initialValues: {
-      email: "",
-      password: "",
+      [email_input.name]: "",
+      [password_input.name]: "",
     },
     validationSchema: LoginSchema,
     onSubmit: values => {
@@ -35,7 +21,6 @@ const LogIn = () => {
     },
   })
   
-
   return (
     <div>
       <div className="Body">
@@ -44,11 +29,7 @@ const LogIn = () => {
             <div className="ui dividing header">Log in</div>
             <form onSubmit={formik.handleSubmit} autoComplete="off" >
               <TextInput
-                id="email"
-                name="email"
-                type="email"
-                label="E-mail"
-                placeholder="someone@exemple.com"
+                {...email_input}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.email}
@@ -56,11 +37,7 @@ const LogIn = () => {
               />
               
               <TextInput
-                id="password"
-                name="password"
-                type="password"
-                label="Password"
-                placeholder="Type password"
+                {...password_input}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.password}
@@ -68,9 +45,7 @@ const LogIn = () => {
               />
               
               <CheckBoxInput
-                name="checkBox"
-                className="ui checkbox"
-                label="Keep me sign in"
+                {...checkbox_login}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.checkBox}
