@@ -8,7 +8,6 @@ const TextInput = ({
   placeholder,
   error,
   ...rest
- 
 }) => {
   return (
     <div>
@@ -22,7 +21,7 @@ const TextInput = ({
         {...rest}
       />
       <br />
-      {error ? <div className='ui negative message'>{error}</div> : null}
+      {error ? <div className="ui negative message">{error}</div> : null}
     </div>
   )
 }
