@@ -1,32 +1,32 @@
 import * as Yup from 'yup'
 
 const SingupSchema = Yup.object().shape({
-
-    firstName: Yup.string()
+  firstName: Yup.string()
     .min(4, 'Too Short!')
     .max(50, 'Too Long!')
-    .required('Required'),
+    .required('Please enter first name.'),
 
-    lastName: Yup.string()
+  lastName: Yup.string()
     .min(4, 'Too Short!')
     .max(50, 'Too Long!')
-    .required('Required'),
-    
-    userName: Yup.string()
-    .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('Required'),
+    .required('Please enter last name.'),
 
-    email: Yup.string().email('Invalid email').required('Required'),
-  
-    password: Yup.string()
+  userName: Yup.string()
+    .min(4, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Please enter username.'),
+
+  email: Yup.string()
+    .email('Invalid email')
+    .required('Please enter a valid email address.'),
+
+  password: Yup.string()
     .min(5, 'Too Short!')
     .max(50, 'Too Long!')
-    .required('Required'),
+    .required('Password must include at least 5 characters.'),
 
-    passwordConfirmation: Yup.string()
+  passwordConfirmation: Yup.string()
     .oneOf([Yup.ref('password'), null], 'Passwords must match')
-    .required('Required'),
-
+    .required('Passwords must match'),
 })
 export default SingupSchema

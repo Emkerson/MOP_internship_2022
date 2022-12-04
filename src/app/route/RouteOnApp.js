@@ -1,5 +1,5 @@
 import React from 'react'
-import NavBar from '../page-components/header-navigation/NavBar'
+import NavBar from '../pages-components/header-navigation/NavBar'
 import LogIn from '../pages/login/LogIn'
 import ListOfMovies from '../pages/movies/ListOfMovies'
 import SignUp from '../pages/signUp/SignUp'
