@@ -102,7 +102,7 @@ const SignUp = () => {
               value={formik.values.passwordConfirmation}
               error={formik.errors.passwordConfirmation}
             />
-
+            <br/>
             <Button
               className="ui positive button"
               text="Make account"

@@ -7,10 +7,14 @@ import SearchBox from '../../pages-components/movies-components/SearchBox'
 import AddFavourites from '../../pages-components/movies-components/AddFavourites'
 import RemoveFavourites from '../../pages-components/movies-components/RemoveFavourites'
 import Button from '../../common/components/Button'
+import { useSelector } from 'react-redux'
 
 const ListOfMovies = () => {
+  //bool values
+  const loggedIn = useSelector((state) => state.login.loggedIn) 
+
   const [movies, setMovies] = useState([])
-  const [searchValue, setSearchValue] = useState('')
+  const [searchValue, setSearchValue] = useState('batman')
   const [favourites, setFavourites] = useState([])
 
   const getMovieRequest = async (searchValue) => {
@@ -42,19 +46,37 @@ const ListOfMovies = () => {
 
   return (
     <div className="movie-app">
-      <div className="ui secondary pointing menu">
+      <div className="ui secondary pointing menu heading">
         <div>
           <HeadingElement heading="Movies" />
         </div>
-        <div className="right menu">
+        <div className="search-box">
           <SearchBox
+            className='ui search'
             searchValue={searchValue}
             setSearchValue={setSearchValue}
           />
         </div>
-        <Link to="/login" className="ui item">
-            <Button onClick={localStorage.clear()} className='logout-button' text='Logout'/>
-        </Link>
+        
+          {loggedIn?
+          <div className='right menu'>
+            <Link to="/login" className="buttons">
+              <Button onClick={localStorage.clear()} className='ui button' text='Logout'/>
+            </Link>
+            </div>
+            :
+            <div className='right menu'>
+              <Link to="/login" className="buttons">
+                <Button className="ui positive button" text="Log in " />
+              </Link>
+              <Link to="/signup" className="buttons">
+                <Button className="ui primary button" text="Sign up " />
+              </Link>
+            </div>
+          }
+          
+        
+        
       </div>
       <div className="inline">
         <MovieList

@@ -74,11 +74,13 @@ const LogIn = () => {
                 onBlur={formik.handleBlur}
                 value={formik.values.checkBox}
               />
+              <br/>
               <Button
                 className="ui positive button"
                 type="submit"
                 text="Log in"
               />
+              <br/>
               <Link to="/signup">
                 <Button className="ui primary button" text="Sign up" />
               </Link>
